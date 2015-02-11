@@ -1,0 +1,8 @@
+{
+    "robotId" : "Robot1",
+    "azureConnectionString": "Endpoint=sb://YOURSERVICEBUSNAMESPACE.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOURACCESSKEY",
+    "heartbeatTimeout" : "60",
+    "heartbeatTopic" : "heartbeat",
+    "signalRUrl" : "http://YOURSIGNALRSITE.azurewebsites.net/signalR"
+}
+

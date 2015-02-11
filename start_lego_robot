@@ -1,0 +1,26 @@
+#!/bin/bash
+# Script to start out application
+
+touch lego_robot.log
+
+echo "Kör startskript för legorobot..." | tee lego_robot.log
+echo -e "Current dir\t$(pwd)" | tee -a lego_robot.log
+echo -e "I am\t\t$(whoami)" | tee -a lego_robot.log
+echo -e "Now is\t\t$(date)" | tee -a lego_robot.log
+echo -e "Host name\t$(hostname -f)" | tee -a lego_robot.log
+
+while [ "$(hostname -I)" == "" ];do
+	sleep 1
+	echo "Väntar på wlan..." | tee -a lego_robot.log
+done
+
+echo -e "Ip-address\t$(hostname -I)" | tee -a lego_robot.log
+
+
+echo "Startar receiveLegoMsg.js" | tee lego_robot.log
+node ./receiveLegoMsg.js | tee -a lego_robot.log &
+echo "Startar heartbeat.js" | tee lego_robot.log
+node ./heartbeat.js | tee -a lego_robot.log &
+
+echo -e "Startskript för legorobot klart\n" | tee -a lego_robot.log
+
